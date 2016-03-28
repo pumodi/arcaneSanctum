@@ -2,6 +2,8 @@
 var buttonsClicked = 0;
 var cursors = 0;
 var mindControlSpells = 0;
+var notoriety = 0;
+var pagesPerSecond = 0;
 
 //Save game logic
 var save = {
@@ -83,6 +85,9 @@ function gameState() {
     document.getElementById("dialogueBox").innerHTML = "After pouring through the volume, you find that it is possible to control someone elses mind. Perhaps you could use this to help you gain even more knowledge. If only you knew how to cast such a spell. Must keep reading...";
     document.getElementById("mindControlSpellDiv").style.visibility = "visible";
   };
+  pagesPerSecond = (cursors + (mindControlSpells *10));
+  notoriety = 0;
+  document.getElementById("notoriety").innerHTML = notoriety;
   document.getElementById("pagePerSec").innerHTML = (cursors + (mindControlSpells *10));
 };
 
