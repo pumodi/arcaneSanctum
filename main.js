@@ -8,6 +8,7 @@ var pagesPerSecond = 0;
 // Boss Variables
 var boss_01_active = false;
 var boss_01_pages = 0;
+var boss_01_target = 0;
 
 //Save game logic
 var save = {
@@ -78,7 +79,13 @@ function buyMindControl(){
 
 //Enemy Damage Logic
 function boss_01_read() {
-    boss_01_pages = boss_01_pages + 850;
+  var boss_page_modifier = 0;
+  var boss_page_mod_set = false;
+  if (boss_page_mod_set = false) {
+    boss_page_mod_set = true;
+    boss_page_modifier = pagesPerSecond + 10;
+  };
+    boss_01_pages = boss_01_pages + boss_page_modifier;
     document.getElementById("boss_01_pagesRead").innerHTML = boss_01_pages;
 }
 
@@ -96,9 +103,12 @@ function gameState() {
     document.getElementById("mindControlSpellDiv").style.visibility = "visible";
   };
   if (mindControlSpells > 10) {
+    if (boss_01_active == false) {
+      boss_01_target = buttonsClicked * 100;
+    };
     document.getElementById("dialogueBox").innerHTML = "A wizard from a nearby town has felt your magical energy and is poised to stop you!";
-    document.getElementById("alertBox").innerHTML = "Read " + (buttonsClicked * 100) + " before the wizard!";
-    document.getElementById("boss_1_box").style.visbility = "visible";
+    document.getElementById("alertBox").innerHTML = "Read " + boss_01_target + " before the wizard!";
+    document.getElementById("boss_1_box").style.visibility = "visible";
     boss_01_active = true;
   };
   pagesPerSecond = (cursors + (mindControlSpells *10));

@@ -11,6 +11,7 @@
   <body>
     <h1 id="dialogueBox">You come across an open book that says "read me"</h1>
     <h3 id="alertBox" class="p2 bold bg-blue border rounded" style="min-height: 50px"></h3>
+    <button onClick="buttonClick(1000)">Dev Cheat: Add 1000 pages</button>
     <button onclick="buttonClick(1)">Read a page</button>
 <div id="autoReadSpellDiv" style="visibility: hidden">
     <button onClick="buyCursor()">Cast an autoread spell</button>
@@ -37,20 +38,17 @@
 <div id="boss_1_box" style="visibility: hidden">
     <ul>
       <li>
-        Wizard Pages Read: <span id="boss_01_pagesRead">0</span><br />
+        Wizard Pages Read: <span id="boss_01_pagesRead"></span><br />
       </li>
     </ul>
 </div>
-    <ul>
-      <li>Total pages read:<span id="clickTotal"></span></li>
-      <li>Notoriety:<span id="notoriety"></span></li>
-    </ul>
-
     <div>
       <h3>Stats</h3>
-      <p>
-        Pages read per second: <span id="pagePerSec"></span>
-      </p>
+      <ul>
+        <li>Total pages read:<span id="clickTotal"></span></li>
+        <li>Notoriety:<span id="notoriety"></span></li>
+        <li>Pages read per second: <span id="pagePerSec"></span></li>
+      </ul>
     </div>
 
 <iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/249736121&amp;color=ff5500&amp;inverse=false&amp;auto_play=true&amp;show_user=true"></iframe>
