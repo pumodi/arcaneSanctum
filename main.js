@@ -1,9 +1,13 @@
-//Variables
+//Self Variables
 var buttonsClicked = 0;
 var cursors = 0;
 var mindControlSpells = 0;
 var notoriety = 0;
 var pagesPerSecond = 0;
+
+// Boss Variables
+var boss_01_active = false;
+var boss_01_pages = 0;
 
 //Save game logic
 var save = {
@@ -24,7 +28,6 @@ function cleanRogueDecimals(input){
 };
 
 //Clickables
-
 function autoClick(number){
   buttonsClicked = buttonsClicked + number;
   document.getElementById("clickTotal").innerHTML = cleanRogueDecimals(buttonsClicked);
@@ -38,6 +41,7 @@ function buttonClick(number){
   gameState();
 };
 
+//Upgrades
 function buyCursor(){
   document.getElementById("alertBox").innerHTML = "";
   var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));
@@ -72,6 +76,12 @@ function buyMindControl(){
   gameState();
 };
 
+//Enemy Damage Logic
+function boss_01_read() {
+    boss_01_pages = boss_01_pages + 850;
+    document.getElementById("boss_01_pagesRead").innerHTML = boss_01_pages;
+}
+
 // Game progression switch
 function gameState() {
   if (buttonsClicked > 0) {
@@ -85,6 +95,12 @@ function gameState() {
     document.getElementById("dialogueBox").innerHTML = "After pouring through the volume, you find that it is possible to control someone elses mind. Perhaps you could use this to help you gain even more knowledge. If only you knew how to cast such a spell. Must keep reading...";
     document.getElementById("mindControlSpellDiv").style.visibility = "visible";
   };
+  if (mindControlSpells > 10) {
+    document.getElementById("dialogueBox").innerHTML = "A wizard from a nearby town has felt your magical energy and is poised to stop you!";
+    document.getElementById("alertBox").innerHTML = "Read " + (buttonsClicked * 100) + " before the wizard!";
+    document.getElementById("boss_1_box").style.visbility = "visible";
+    boss_01_active = true;
+  };
   pagesPerSecond = (cursors + (mindControlSpells *10));
   notoriety = 0;
   document.getElementById("notoriety").innerHTML = notoriety;
@@ -95,5 +111,8 @@ function gameState() {
 window.setInterval(function() {
   autoClick(cursors);
   autoClick(mindControlSpells * 10);
+  if (boss_01_active == true) {
+    boss_01_read();
+  };
   gameState();
 }, 1000);
