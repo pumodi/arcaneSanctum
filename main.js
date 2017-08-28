@@ -2,6 +2,7 @@
 var buttonsClicked = 0;
 var cursors = 0;
 var mindControlSpells = 0;
+var minionSpells = 0;
 var notoriety = 0;
 var pagesPerSecond = 0;
 
@@ -42,7 +43,15 @@ function buttonClick(number){
   gameState();
 };
 
+function minionClick(number){
+  buttonsClicked = buttonsClicked + number;
+  document.getElementById("clickTotal").innerHTML = cleanRogueDecimals(buttonsClicked);
+  document.getElementById("alertBox").innerHTML = "";
+  gameState();
+}
+
 //Upgrades
+  //Read a page
 function buyCursor(){
   document.getElementById("alertBox").innerHTML = "";
   var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));
@@ -60,6 +69,7 @@ function buyCursor(){
   gameState();
 };
 
+  //Cast a mind control spell
 function buyMindControl(){
   document.getElementById("alertBox").innerHTML = "";
   var mindControlCost = Math.floor(100 * Math.pow(1.1,mindControlSpells));
@@ -74,6 +84,24 @@ function buyMindControl(){
   };
   var nextCost = Math.floor(100 * Math.pow(1.1,mindControlSpells));
   document.getElementById("mindControlCost").innerHTML = cleanRogueDecimals(nextCost);
+  gameState();
+};
+
+  //Summon some minions
+function buyMinions(){
+  document.getElementById("alertBox").innerHTML = "";
+  var minionsCost = Math.floor(1000 * Math.pow(1.1,minionSpells));
+  if(buttonsClicked >= minionsCost){
+    minionSpells = minionSpells++;
+    buttonsClicked = buttonsClicked - minionsCost;
+    document.getElementById("minionSpells").innerHTML = cleanRogueDecimals(minionSpells);
+    document.getElementById("clickTotal").innerHTML = cleanRogueDecimals(buttonsClicked);
+  }
+  else {
+    document.getElementById("alertBox").innerHTML = "You don't have enough arcane knowledge to Summon any minions...";
+  };
+  var nextCost = Math.floor(1000 * Math.pow(1.1,minionSpells));
+  document.getElementById("minionsCost").innerHTML = cleanRogueDecimals(nextCost);
   gameState();
 };
 
@@ -96,11 +124,16 @@ function gameState() {
     document.getElementById("autoReadSpellDiv").style.visibility = "visible";
   };
   if (cursors > 0) {
-    document.getElementById("dialogueBox").innerHTML = "A power overwhelming poured out of you as you read the arcane lettering. The pages are turning themselves now yet somehow you still seem to know what they contain...";
+    document.getElementById("dialogueBox").innerHTML = "A power overwhelming pours out of you as you read the arcane lettering. The pages are turning themselves now yet somehow you still seem to know what they contain...";
   };
   if (cursors > 5) {
     document.getElementById("dialogueBox").innerHTML = "After pouring through the volume, you find that it is possible to control someone elses mind. Perhaps you could use this to help you gain even more knowledge. If only you knew how to cast such a spell. Must keep reading...";
     document.getElementById("mindControlSpellDiv").style.visibility = "visible";
+  };
+  if (cursors > 1000) {
+    document.getElementById("dialogueBox").innerHTML = "MINION SPELL ACTIVE";
+    document.getElementById("minionSpellDiv").style.visibility = "visible";
+    console.log("MINIONONNNNNNS");
   };
   if (mindControlSpells > 10) {
     if (boss_01_active == false) {
@@ -110,17 +143,18 @@ function gameState() {
     document.getElementById("alertBox").innerHTML = "Read " + boss_01_target + " before the wizard!";
     document.getElementById("boss_1_box").style.visibility = "visible";
     boss_01_active = true;
-  };
-  pagesPerSecond = (cursors + (mindControlSpells *10));
+  }; 
+  pagesPerSecond = (cursors + (mindControlSpells *10) + (minionSpells *1000));
   notoriety = 0;
   document.getElementById("notoriety").innerHTML = notoriety;
-  document.getElementById("pagePerSec").innerHTML = (cursors + (mindControlSpells *10));
+  document.getElementById("pagePerSec").innerHTML = (cursors + (mindControlSpells *10) + (minionSpells *1000));
 };
 
 // Handles time based effects
 window.setInterval(function() {
   autoClick(cursors);
   autoClick(mindControlSpells * 10);
+  autoClick(minionSpells * 1000);
   if (boss_01_active == true) {
     boss_01_read();
   };
