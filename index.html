@@ -19,54 +19,56 @@
     </div>
   <div id="gameplayArea" style="position: absolute;top: 20%;width: 90%;margin: 20px;">
     <h3 id="alertBox" class="p2 bold bg-darken-2 border rounded" style="min-height: 50px;"></h3>
+    <div id="stats-box" class="">
+      <h3>Stats</h3>
+      <ul>
+        <li>Total pages read:<span id="clickTotal"></span>
+        &nbsp;&nbsp;&nbsp;&nbsp;Pages read per second:<span id="pagesPerSecond"</span></li>
+        <li>Notoriety:<span id="notoriety"></span></li>
+      </ul>
+    </div>
     <button class="btn border bg-red" onClick="buttonClick(1000)">Dev Cheat: Add 1000 pages</button>
     <button class="btn border rounded bg-darken-3" onclick="buttonClick(1)">Read a page</button>
-    <div id="autoReadSpellDiv" style="visibility: hidden; margin-top: 10px;">
-      <button class="btn border rounded bg-darken-3" onClick="buyCursor()">Cast an autoread spell</button>
-        <ul>
-          <li>
-            Auto-Read Spells: <span id="cursors">0</span><br />
-          </li>
-          <li>
-            Auto-Read Cost: <span id="cursorCost">10</span>
-          </li>
-        </ul>
-    </div>
-    <div id="mindControlSpellDiv" style="visibility: hidden; margin-top: 10px;">
-      <button class="btn border rounded bg-darken-3" onClick="buyMindControl()">Cast a Mind Control spell</button>
-      <ul>
-        <li>
-          Mind Control Spells: <span id="mindControlSpells">0</span><br />
-        </li>
-        <li>
-          Mind Control Cost: <span id="mindControlCost">100</span>
-        </li>
-      </ul>
-    </div>
-    <div id="minionSpellDiv" style="visibility: hidden; margin-top: 10px; margin-left: 10px;">
-      <button class="btn border rounded bg-darken-3" onClick="buyMinions()">Summon some minions</button>
-      <ul>
-        <li>
-          Minions Summoned: <span id="minionSpells">0</span><br />
-        </li>
-        <li>
-          Minion Cost: <span id="minionsCost">1000</span>
-        </li>
-      </ul>
+    <div id="clickablesBox" class="bg-darken-1 border rounded" style="overflow:auto;height:150px;width:40%;border:5px;">
+      <div id="autoReadSpellDiv" style="visibility: hidden; margin-top: 10px;">
+        <button class="btn border rounded bg-darken-3" onClick="buyCursor()">Cast an autoread spell</button>
+          <ul>
+            <li>
+              Auto-Read Spells: <span id="cursors">0</span><br />
+            </li>
+            <li>
+              Auto-Read Cost: <span id="cursorCost">10</span>
+            </li>
+          </ul>
+        </div>
+      <div id="mindControlSpellDiv" style="visibility: hidden; margin-top: 10px;">
+        <button class="btn border rounded bg-darken-3" onClick="buyMindControl()">Cast a Mind Control spell</button>
+          <ul>
+            <li>
+              Mind Control Spells: <span id="mindControlSpells">0</span><br />
+            </li>
+            <li>
+              Mind Control Cost: <span id="mindControlCost">100</span>
+            </li>
+          </ul>
+      </div>
+      <div id="minionSpellDiv" style="visibility: hidden; margin-top: 10px; margin-left: 10px;">
+        <button class="btn border rounded bg-darken-3" onClick="buyMinions()">Summon some minions</button>
+          <ul>
+            <li>
+              Minions Summoned: <span id="minionSpells">0</span><br />
+            </li>
+            <li>
+              Minion Cost: <span id="minionsCost">1000</span>
+            </li>
+          </ul>
+      </div>
     </div>
     <div id="boss_1_box" style="visibility: hidden">
       <ul>
         <li>
           Wizard Pages Read: <span id="boss_01_pagesRead"></span><br />
         </li>
-      </ul>
-    </div>
-    <div id="stats-box" class="">
-      <h3>Stats</h3>
-      <ul>
-        <li>Total pages read:<span id="clickTotal"></span></li>
-        <li>Notoriety:<span id="notoriety"></span></li>
-        <li>Pages read per second: <span id="pagePerSec"></span></li>
       </ul>
     </div>
 </div>

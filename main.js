@@ -6,6 +6,10 @@ var minionSpells = 0;
 var notoriety = 0;
 var pagesPerSecond = 0;
 
+//Story Booleans
+var story_message_001 = false;var story_message_002 = true;var story_message_003 = true;var story_message_004 = true;
+var story_message_boss_01 = true;
+
 // Boss Variables
 var boss_01_active = false;
 var boss_01_pages = 0;
@@ -92,7 +96,7 @@ function buyMinions(){
   document.getElementById("alertBox").innerHTML = "";
   var minionsCost = Math.floor(1000 * Math.pow(1.1,minionSpells));
   if(buttonsClicked >= minionsCost){
-    minionSpells = minionSpells++;
+    minionSpells = minionSpells + 1;
     buttonsClicked = buttonsClicked - minionsCost;
     document.getElementById("minionSpells").innerHTML = cleanRogueDecimals(minionSpells);
     document.getElementById("clickTotal").innerHTML = cleanRogueDecimals(buttonsClicked);
@@ -119,23 +123,31 @@ function boss_01_read() {
 
 // Game progression switch
 function gameState() {
-  if (buttonsClicked > 0) {
+  if (buttonsClicked > 0 && story_message_001 == false) {
     document.getElementById("dialogueBox").innerHTML = "The book appears to be a spellbook of some kind. You feel compelled to read further...";
     document.getElementById("autoReadSpellDiv").style.visibility = "visible";
+    story_message_001 = true;
+    story_message_002 = false;
   };
-  if (cursors > 0) {
+  if (cursors > 0 && story_message_002 == false) {
     document.getElementById("dialogueBox").innerHTML = "A power overwhelming pours out of you as you read the arcane lettering. The pages are turning themselves now yet somehow you still seem to know what they contain...";
+    story_message_002 = true;
+    story_message_003 = false;
   };
-  if (cursors > 5) {
+  if (buttonsClicked > 5 && story_message_003 == false) {
     document.getElementById("dialogueBox").innerHTML = "After pouring through the volume, you find that it is possible to control someone elses mind. Perhaps you could use this to help you gain even more knowledge. If only you knew how to cast such a spell. Must keep reading...";
     document.getElementById("mindControlSpellDiv").style.visibility = "visible";
+    story_message_003 = true;
+    story_message_004 = false;
+    story_message_boss_01 = false;
   };
-  if (cursors > 1000) {
+  if (buttonsClicked > 1000 && story_message_004 == false) {
     document.getElementById("dialogueBox").innerHTML = "MINION SPELL ACTIVE";
     document.getElementById("minionSpellDiv").style.visibility = "visible";
-    console.log("MINIONONNNNNNS");
+    story_message_004 = true;
   };
-  if (mindControlSpells > 10) {
+  if (mindControlSpells > 10 && story_message_boss_01 == false) {
+    story_message_boss_01 = true;
     if (boss_01_active == false) {
       boss_01_target = buttonsClicked * 100;
     };
@@ -143,18 +155,19 @@ function gameState() {
     document.getElementById("alertBox").innerHTML = "Read " + boss_01_target + " before the wizard!";
     document.getElementById("boss_1_box").style.visibility = "visible";
     boss_01_active = true;
-  }; 
-  pagesPerSecond = (cursors + (mindControlSpells *10) + (minionSpells *1000));
+  };
+  pagesPerSecond = (cursors + (mindControlSpells *10) + (minionSpells *100));
   notoriety = 0;
   document.getElementById("notoriety").innerHTML = notoriety;
-  document.getElementById("pagePerSec").innerHTML = (cursors + (mindControlSpells *10) + (minionSpells *1000));
+  document.getElementById("pagePerSec").innerHTML = (cursors + (mindControlSpells *10) + (minionSpells *100));
 };
 
 // Handles time based effects
 window.setInterval(function() {
+  document.getElementById("pagesPerSecond").innerHTML = pagesPerSecond + "/sec";
   autoClick(cursors);
   autoClick(mindControlSpells * 10);
-  autoClick(minionSpells * 1000);
+  autoClick(minionSpells * 100);
   if (boss_01_active == true) {
     boss_01_read();
   };
