@@ -14,6 +14,9 @@ var story_message_boss_01 = true;
 var boss_01_active = false;
 var boss_01_pages = 0;
 var boss_01_target = 0;
+var boss_01_targetSet = false;
+var boss_page_modifier = 0;
+var boss_page_mod_set = false;
 
 //Save game logic
 var save = {
@@ -111,15 +114,14 @@ function buyMinions(){
 
 //Enemy Damage Logic
 function boss_01_read() {
-  var boss_page_modifier = 0;
-  var boss_page_mod_set = false;
-  if (boss_page_mod_set = false) {
+  if (boss_page_mod_set == false) {
     boss_page_mod_set = true;
     boss_page_modifier = pagesPerSecond + 10;
   };
-    boss_01_pages = boss_01_pages + boss_page_modifier;
-    document.getElementById("boss_01_pagesRead").innerHTML = boss_01_pages;
-}
+  boss_01_pages = boss_01_pages + boss_page_modifier;
+  document.getElementById("boss_01_pagesRead").innerHTML = cleanRogueDecimals(boss_01_pages);
+  console.log(boss_01_pages);
+};
 
 // Game progression switch
 function gameState() {
@@ -147,10 +149,11 @@ function gameState() {
     story_message_004 = true;
   };
   if (mindControlSpells > 10 && story_message_boss_01 == false) {
-    story_message_boss_01 = true;
-    if (boss_01_active == false) {
+    if (boss_01_targetSet == false) {
       boss_01_target = buttonsClicked * 100;
+      boss_01_targetSet = true;
     };
+    story_message_boss_01 = true;
     document.getElementById("dialogueBox").innerHTML = "A wizard from a nearby town has felt your magical energy and is poised to stop you!";
     document.getElementById("alertBox").innerHTML = "Read " + boss_01_target + " before the wizard!";
     document.getElementById("boss_1_box").style.visibility = "visible";
@@ -159,7 +162,7 @@ function gameState() {
   pagesPerSecond = (cursors + (mindControlSpells *10) + (minionSpells *100));
   notoriety = 0;
   document.getElementById("notoriety").innerHTML = notoriety;
-  document.getElementById("pagePerSec").innerHTML = (cursors + (mindControlSpells *10) + (minionSpells *100));
+  document.getElementById("pagesPerSecond").innerHTML = (cursors + (mindControlSpells *10) + (minionSpells *100));
 };
 
 // Handles time based effects
