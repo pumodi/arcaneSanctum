@@ -1,3 +1,5 @@
+
+
 //Self Variables
 var buttonsClicked = 0;
 var cursors = 0;
@@ -37,23 +39,10 @@ function cleanRogueDecimals(input){
 };
 
 //Clickables
-function autoClick(number){
+function readPages(number){
+  
   buttonsClicked = buttonsClicked + number;
   document.getElementById("clickTotal").innerHTML = cleanRogueDecimals(buttonsClicked);
-  gameState();
-}
-
-function buttonClick(number){
-  buttonsClicked = buttonsClicked + number;
-  document.getElementById("clickTotal").innerHTML = cleanRogueDecimals(buttonsClicked);
-  document.getElementById("alertBox").innerHTML = "";
-  gameState();
-};
-
-function minionClick(number){
-  buttonsClicked = buttonsClicked + number;
-  document.getElementById("clickTotal").innerHTML = cleanRogueDecimals(buttonsClicked);
-  document.getElementById("alertBox").innerHTML = "";
   gameState();
 }
 
@@ -168,9 +157,7 @@ function gameState() {
 // Handles time based effects
 window.setInterval(function() {
   document.getElementById("pagesPerSecond").innerHTML = pagesPerSecond + "/sec";
-  autoClick(cursors);
-  autoClick(mindControlSpells * 10);
-  autoClick(minionSpells * 100);
+  readPages();
   if (boss_01_active == true) {
     boss_01_read();
   };
