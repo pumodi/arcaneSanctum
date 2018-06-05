@@ -1,26 +1,26 @@
-// Public Variables
+// Variables
   // Display Vars
-public var story_message_fill = "";
-public var alert_box_fill = "";
-public var boss_visibility = false;
+var story_message_fill = "";
+var alert_box_fill = "";
+var boss_visibility = false;
 
   // Player Vars
-public var pages_read = 0;
-public var notoriety = 0;
+var pages_read = 0;
+var notoriety = 0;
 
   // Clickables Vars
-public var spell_autoread = 0;
-public var spell_minion = 0;
-public var spell_mindControl = 0;
-public var spell_04 = 0;
-public var spell_05 = 0;
-public var spell_06 = 0;
-public var spell_07 = 0;
-public var spell_08 = 0;
-public var spell_09 = 0;
-public var spell_10 = 0;
-public var spell_11 = 0;
-public var spell_12 = 0;
+var spell_autoread = 0;
+var spell_minion = 0;
+var spell_mindControl = 0;
+var spell_04 = 0;
+var spell_05 = 0;
+var spell_06 = 0;
+var spell_07 = 0;
+var spell_08 = 0;
+var spell_09 = 0;
+var spell_10 = 0;
+var spell_11 = 0;
+var spell_12 = 0;
 
 function stateMachine() {
     document.getElementById("dialogueBox").innerHTML = story_message_fill;
@@ -37,7 +37,6 @@ function stateMachine() {
         boss_active = false;
       };
     };
-  };
   pagesPerSecond = (spell_autoread + (spell_mindControl *10) + (spell_minion *100));
 // Notoriety Check
   switch (notoriety) {

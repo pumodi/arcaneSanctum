@@ -22,22 +22,22 @@
     <div id="stats-box" class="">
       <h3>Stats</h3>
       <ul>
-        <li>Total pages read:<span id="clickTotal"></span>
+        <li>Total pages read:<span id="pages_read"></span>
         &nbsp;&nbsp;&nbsp;&nbsp;Pages read per second:<span id="pagesPerSecond"</span></li>
         <li>Notoriety:<span id="notoriety"></span></li>
       </ul>
     </div>
-    <button class="btn border bg-red" onClick="buttonClick(1000)">Dev Cheat: Add 1000 pages</button>
-    <button class="btn border rounded bg-darken-3" onclick="buttonClick(1)">Read a page</button>
+    <button class="btn border bg-red" onClick="readPages(1000)">Dev Cheat: Add 1000 pages</button>
+    <button class="btn border rounded bg-darken-3" onclick="readPages(1)">Read a page</button>
     <div id="clickablesBox" class="bg-darken-1 border rounded" style="overflow:auto;height:150px;width:40%;border:5px;">
       <div id="autoReadSpellDiv" style="visibility: hidden; margin-top: 10px;">
-        <button class="btn border rounded bg-darken-3" onClick="buyCursor()">Cast an autoread spell</button>
+        <button class="btn border rounded bg-darken-3" onClick="buyAutoread()">Cast an autoread spell</button>
           <ul>
             <li>
-              Auto-Read Spells: <span id="cursors">0</span><br />
+              Auto-Read Spells: <span id="spell_autoreadCast">0</span><br />
             </li>
             <li>
-              Auto-Read Cost: <span id="cursorCost">10</span>
+              Auto-Read Cost: <span id="spell_autoreadCost">10</span>
             </li>
           </ul>
         </div>
@@ -45,7 +45,7 @@
         <button class="btn border rounded bg-darken-3" onClick="buyMindControl()">Cast a Mind Control spell</button>
           <ul>
             <li>
-              Mind Control Spells: <span id="mindControlSpells">0</span><br />
+              Mind Control Spells: <span id="spell_mindcontrolCast">0</span><br />
             </li>
             <li>
               Mind Control Cost: <span id="mindControlCost">100</span>
@@ -56,7 +56,7 @@
         <button class="btn border rounded bg-darken-3" onClick="buyMinions()">Summon some minions</button>
           <ul>
             <li>
-              Minions Summoned: <span id="minionSpells">0</span><br />
+              Minions Summoned: <span id="spell_summonminionCast">0</span><br />
             </li>
             <li>
               Minion Cost: <span id="minionsCost">1000</span>
@@ -86,6 +86,7 @@
   </div>
 </footer>
     <script type="text/javascript" src="main.js"></script>
+<!--    <script type="text/javascript" src="stateMachine.js"></script> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
   </body>
 </html>
