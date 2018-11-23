@@ -1,0 +1,20 @@
+#alertBox {
+  background-color:#50514F;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#gameplayArea {
+  background-color: #F25F5C;
+  border-radius: 50px;
+}
+#clickablesBox{
+  background-color: #247BA0;
+  border-bottom-left-radius: 20px;
+}
+body {
+  background-color: #70C1B3;
+}
+#header {
+  background-color: white;
+}

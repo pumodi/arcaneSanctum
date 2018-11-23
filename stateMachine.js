@@ -1,47 +1,51 @@
-// Variables
-  // Display Vars
-var story_message_fill = "";
-var alert_box_fill = "";
-var boss_visibility = false;
-
-  // Player Vars
+//// Variables
+// Player Vars
 var pages_read = 0;
+var pages_read_this_game =0;
 var notoriety = 0;
+var pagesPerSecond = 0;
 
-  // Clickables Vars
-var spell_autoread = 0;
-var spell_minion = 0;
-var spell_mindControl = 0;
-var spell_04 = 0;
-var spell_05 = 0;
-var spell_06 = 0;
-var spell_07 = 0;
-var spell_08 = 0;
-var spell_09 = 0;
-var spell_10 = 0;
-var spell_11 = 0;
-var spell_12 = 0;
+  // Clickables Cost
+var spell_01_cost = 0;
+var spell_02_cost = 0;
+var spell_03_cost = 0;
+var spell_04_cost = 0;
 
-function stateMachine() {
-    document.getElementById("dialogueBox").innerHTML = story_message_fill;
-    document.getElementById("alertBox").innerHTML = alert_box_fill;
-    switch (boss_visibility) {
-      case 1:
-      {
-        document.getElementById("boss_box").style.visibility = true;
-        boss_active = true;
-      };
-      default:
-      {
-        document.getElementById("boss_box").style.visibility = false;
-        boss_active = false;
-      };
+  // Total Clickables Bought
+var spell_01_total = 0;
+var spell_02_total = 0;
+var spell_03_total = 0;
+var spell_04_total = 0;
+
+//// Functions
+//Story Machine
+function plotMachine() {
+  switch (true) {
+    case (pages_read_this_game <= 0):
+      document.getElementById("dialogueBox").innerHTML = 'You come across an open book that says "read me"';
+      break;
+    case (pages_read_this_game >= 1):
+      document.getElementById("dialogueBox").innerHTML = "The book appears to be a spellbook of some kind. You feel compelled to read further...";
+      document.getElementById("autoReadSpellDiv").style.visibility = "visible";
+      break;
+    case (pages_read_this_game >= 1000):
+      document.getElementById("dialogueBox").innerHTML = "After pouring through the volume, you find that it is possible to control someone elses mind. Perhaps you could use this to help you gain even more knowledge. If only you knew how to cast such a spell. Must keep reading...";
+      document.getElementById("mindControlSpellDiv").style.visibility = "visible";
+      break;
+    case (pages_read_this_game >= 10000):
+      document.getElementById("dialogueBox").innerHTML = "MINION SPELL ACTIVE";
+      document.getElementById("minionSpellDiv").style.visibility = "visible";
+      break;
+    default:
+      document.getElementById("dialogueBox").innerHTML = 'You come across an open book that says "read me"';
+      break;
     };
-  pagesPerSecond = (spell_autoread + (spell_mindControl *10) + (spell_minion *100));
-// Notoriety Check
-  switch (notoriety) {
-    case notoriety > 0:
-
-  };
-  document.getElementById("pagesPerSecond").innerHTML = (spell_autoread + (spell_mindControl *10) + (spell_minion *100) + (spell_04 *1000) + (spell_05 *10000) + (spell_06 *100000));
+};
+function stateMachine() {
+// Display Variables
+  pagesPerSecond = (spell_01_total+ (spell_02_total *10) + (spell_03_total *100) + (spell_04_total *1000));
+  document.getElementById("notoriety").innerHTML = notoriety;
+  document.getElementById("pagesPerSecond").innerHTML = pagesPerSecond;
+// Call plot machine
+plotMachine();
 };
