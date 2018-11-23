@@ -1,3 +1,5 @@
+var alertBoxClear = 0;
+
 //Save game logic
 /* var save = {
   pages_read: pages_read,
@@ -23,7 +25,12 @@ function readPages(number){
   document.getElementById("pages_read").innerHTML = cleanRogueDecimals(pages_read);
   stateMachine();
 }
-//Upgrades
+//Spells
+function read_manual(){
+  readPages(1+modifier_speedRead_total);
+  manualClicks = manualClicks+1;
+  console.log("Mod =" + modifier_speedRead);
+}
 // Spell_01 Cast an autoread spell
 function buy_spell_01(){
   document.getElementById("alertBox").innerHTML = "";
@@ -47,37 +54,54 @@ function buy_spell_01(){
 // Spell 02 Cast a mind control spell
 function buy_spell_02(){
   document.getElementById("alertBox").innerHTML = "";
-  var mindControlCost = Math.floor(100 * Math.pow(1.1,spell_02_total));
+  var spell_02_cost = Math.floor(100 * Math.pow(1.2,spell_02_total));
   if(pages_read >= spell_02_cost){
     spell_02_total = spell_02_total + 1;
     pages_read = pages_read - spell_02_cost;
     document.getElementById("spell_02_total_span").innerHTML = cleanRogueDecimals(spell_02_total);
+    notoriety = notoriety + 0.1;
   }
   else {
     document.getElementById("alertBox").innerHTML = "You don't have enough arcane knowledge to cast a Mind Control spell...";
   };
-  var nextCost = Math.floor(100 * Math.pow(1.1,spell_02_total));
+  var nextCost = Math.floor(100 * Math.pow(1.2,spell_02_total));
   document.getElementById("spell_02_cost_span").innerHTML = cleanRogueDecimals(nextCost);
   stateMachine();
 };
 // Spell 03 Summon some minions
 function buy_spell_03(){
   document.getElementById("alertBox").innerHTML = "";
-  var minionsCost = Math.floor(1000 * Math.pow(1.1,spell_03_total));
+  var spell_03_cost = Math.floor(1000 * Math.pow(1.3,spell_03_total));
   if(pages_read >= spell_03_cost){
     spell_03_total = spell_03_total + 1;
     pages_read = pages_read - spell_03_cost;
     document.getElementById("spell_03_total_span").innerHTML = cleanRogueDecimals(spell_03_total);
+    notoriety = notoriety + 0.3
   }
   else {
     document.getElementById("alertBox").innerHTML = "You don't have enough arcane knowledge to Summon any minions...";
   };
-  var nextCost = Math.floor(1000 * Math.pow(1.1,spell_03_total));
+  var nextCost = Math.floor(1000 * Math.pow(1.3,spell_03_total));
   document.getElementById("spell_03_cost_span").innerHTML = cleanRogueDecimals(nextCost);
   stateMachine();
 };
-
-var alertBoxClear = 0;
+// Spell 04 Cast a speed read spell
+function buy_spell_04(){
+  document.getElementById("alertBox").innerHTML = "";
+  var spell_04_cost = Math.floor(1000 * Math.pow(1.4,spell_04_total));
+  if(pages_read >= spell_04_cost){
+    spell_04_total = spell_04_total + 1;
+    pages_read = pages_read - spell_04_cost;
+    document.getElementById("spell_04_total_span").innerHTML = cleanRogueDecimals(spell_04_total);
+    notoriety = notoriety + 0.8
+  }
+  else {
+    document.getElementById("alertBox").innerHTML = "You don't have enough arcane knowledge to cast this spell...";
+  };
+  var nextCost = Math.floor(1000 * Math.pow(1.4,spell_04_total));
+  document.getElementById("spell_04_cost_span").innerHTML = cleanRogueDecimals(nextCost);
+  stateMachine();
+};
 
 // Handles time based effects
 window.setInterval(function() {
@@ -87,6 +111,6 @@ window.setInterval(function() {
     document.getElementById("alertBox").innerHTML = "";
     alertBoxClear = 0;
   };
-  readPages((spell_01_total*1)+(spell_02_total*5)+(spell_03_total*10));
+  readPages((spell_01_total*1)+(spell_02_total*5)+(spell_03_total*10)+(spell_04_total*100));
   stateMachine();
 }, 1000);

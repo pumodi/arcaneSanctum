@@ -26,19 +26,27 @@
     <div id="stats-box" class="">
       <h3>Stats</h3>
       <ul>
-        <li>Total pages read:<span id="pages_read"></span>
-        &nbsp;&nbsp;&nbsp;&nbsp;Pages read per second:<span id="pagesPerSecond"</span></li>
-        <li>Notoriety:<span id="notoriety"></span></li>
+        <li>Arcane Knowledge Available: <span id="pages_read"></span>
+        &nbsp;&nbsp;&nbsp;&nbsp;Pages read per second: <span id="pagesPerSecond"></span>
+          &nbsp;&nbsp;&nbsp;&nbsp;Pages per manual click: <span id="pagesPerManualClick"></span>
+        </li>
+          <li>
+            Total pages read: <span id="pages_read_total"></span>&nbsp;&nbsp;&nbsp;&nbsp;Total Manual Clicks: <span id="manual_clicks_total"></span>
+          </li>
+        <li>Notoriety: <span id="notoriety"></span></li>
       </ul>
     </div>
     <!-- Buttons -->
-    <!--<button class="btn border bg-red" onClick="readPages(1000)">Dev Cheat: Add 1000 pages</button>-->
-    <button class="btn border rounded bg-darken-3" onclick="readPages(1)">Read a page</button>
-    <div id="clickablesBox" class="bg-darken-1 border rounded" style="overflow:auto;height:150px;width:70%;border:5px;">
+    <button class="btn border rounded bg-darken-3" onclick="read_manual(1)">Read a page</button>
+    <button class="btn border rounded bg-darken-3" onclick="readPages(100)">Read 100 pages</button>
+    <button class="btn border rounded bg-darken-3" onclick="readPages(1000)">Read 1000 pages</button>
+    <span id="buyableItems">
+      <!-- Auto Clickers -->
+      <div id="clickablesBox" class="bg-darken-1 border rounded" style="overflow:auto;height:150px;width:40%;border:5px;display:inline-block;">
       <!-- Spell 01 -->
       <div id="autoReadSpellDiv" style="visibility: hidden; margin-top: 10px;">
         <button class="btn border rounded bg-darken-3" onClick="buy_spell_01()">Cast an autoread spell</button>
-          <ul>
+          <ul style="display:inline-block;">
             <li>
               Auto-Read Spells: <span id="spell_01_total_span">0</span><br />
             </li>
@@ -50,7 +58,7 @@
         <!-- Spell 02 -->
       <div id="mindControlSpellDiv" style="visibility: hidden; margin-top: 10px;">
         <button class="btn border rounded bg-darken-3" onClick="buy_spell_02()">Cast a Mind Control spell</button>
-          <ul>
+          <ul style="display:inline-block;">
             <li>
               Mind Control Spells: <span id="spell_02_total_span">0</span><br />
             </li>
@@ -62,7 +70,7 @@
       <!-- Spell 03 -->
       <div id="minionSpellDiv" style="visibility: hidden; margin-top: 10px; margin-left: 10px;">
         <button class="btn border rounded bg-darken-3" onClick="buy_spell_03()">Summon some minions</button>
-          <ul>
+          <ul style="display:inline-block;">
             <li>
               Minions Summoned: <span id="spell_03_total_span">0</span><br />
             </li>
@@ -71,10 +79,40 @@
             </li>
           </ul>
       </div>
+      <div id="spell_04_Div" style="visibility: hidden; margin-top: 10px; margin-left: 10px;">
+        <button class="btn border rounded bg-darken-3" onClick="buy_spell_04()">Spell 04</button>
+          <ul style="display:inline-block;">
+            <li>
+              Spell 04 Total: <span id="spell_04_total_span">0</span><br />
+            </li>
+            <li>
+              Spell 04 Cost: <span id="spell_04_cost_span">10000</span>
+            </li>
+          </ul>
+      </div>
     </div>
+      <!-- Upgrades block -->
+      <div id="upgradesBox" class="bg-darken-1 border rounded" style="overflow:auto;height:150px;width:40%;border:5px;display:inline-block;">
+      <div id="modifier_speedReadDiv" style="visibility: hidden; margin-top: 10px;">
+        <button class="btn border rounded bg-darken-3" onClick="speedRead()">Speed Reading</button>
+        <p>
+          Doubles the pages you read during a manual click.
+        </p>
+          <ul style="display:inline-block;">
+            <li>
+              Auto-Read Spells: <span id="modifier_speedRead_total_span">0</span><br />
+            </li>
+            <li>
+              Auto-Read Cost: <span id="modifier_speedRead_cost_span">1000</span>
+            </li>
+          </ul>
+        </div>
+    </div>
+    </span>
 </div>
 <!-- Footer -->
     <script type="text/javascript" src="stateMachine.js"></script>
+    <script type="text/javascript" src="upgrades.js"></script>
     <script type="text/javascript" src="main.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
   </body>
