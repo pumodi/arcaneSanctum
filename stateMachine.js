@@ -34,14 +34,38 @@ function plotMachine() {
       document.getElementById("dialogueBox").innerHTML = "After pouring through the volume, you find that it is possible to control someone elses mind. Perhaps you could use this to help you gain even more knowledge. If only you knew how to cast such a spell. Must keep reading...";
       document.getElementById("mindControlSpellDiv").style.visibility = "visible";
       break;
-    case (pages_read_this_game >= 10000 && pages_read_this_game <100000):
+    case (pages_read_this_game >= 10000 && pages_read_this_game <50000):
       document.getElementById("dialogueBox").innerHTML = "MINION SPELL ACTIVE";
       document.getElementById("minionSpellDiv").style.visibility = "visible";
       document.getElementById("modifier_speedReadDiv").style.visibility = "visible";
       break;
-    case (pages_read_this_game >= 100000 && pages_read_this_game <1000000):
+    case (pages_read_this_game >= 50000 && pages_read_this_game <1000000):
       document.getElementById("dialogueBox").innerHTML = "SPELL 04 ACTIVE";
       document.getElementById("spell_04_Div").style.visibility = "visible";
+      break;
+    case (pages_read_this_game >= 100000 && pages_read_this_game <450000):
+      document.getElementById("dialogueBox").innerHTML = "SPELL 05 ACTIVE";
+      document.getElementById("spell_05_Div").style.visibility = "visible";
+      break;
+    case (pages_read_this_game >= 450000 && pages_read_this_game <900000):
+      document.getElementById("dialogueBox").innerHTML = "SPELL 06 ACTIVE";
+      document.getElementById("spell_06_Div").style.visibility = "visible";
+      break;
+    case (pages_read_this_game >= 900000 && pages_read_this_game <1250000):
+      document.getElementById("dialogueBox").innerHTML = "SPELL 07 ACTIVE";
+      document.getElementById("spell_07_Div").style.visibility = "visible";
+      break;
+    case (pages_read_this_game >= 1250000 && pages_read_this_game <9000000):
+      document.getElementById("dialogueBox").innerHTML = "SPELL 08 ACTIVE";
+      document.getElementById("spell_08_Div").style.visibility = "visible";
+      break;
+    case (pages_read_this_game >= 9000000 && pages_read_this_game <25000000):
+      document.getElementById("dialogueBox").innerHTML = "SPELL 09 ACTIVE";
+      document.getElementById("spell_09_Div").style.visibility = "visible";
+      break;
+    case (pages_read_this_game >= 25000000 && pages_read_this_game <75000000):
+      document.getElementById("dialogueBox").innerHTML = "SPELL 10 ACTIVE";
+      document.getElementById("spell_10_Div").style.visibility = "visible";
       break;
     default:
       document.getElementById("dialogueBox").innerHTML = 'You come across an open book that says "read me"';
