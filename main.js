@@ -34,7 +34,7 @@ function read_manual(){
 // Spell_01 Cast an autoread spell
 function buy_spell_01(){
   document.getElementById("alertBox").innerHTML = "";
-  var spell_01_cost = Math.floor(10 * Math.pow(1.1,spell_01_total));
+  var spell_01_cost = Math.floor(15 * Math.pow(1.15,spell_01_total));
   if(pages_read >= spell_01_cost){
     spell_01_total = spell_01_total + 1;
     pages_read = pages_read - spell_01_cost;
@@ -47,7 +47,7 @@ function buy_spell_01(){
   else {
     document.getElementById("alertBox").innerHTML = "You don't have enough arcane knowledge to cast an Auto-Read spell...";
   };
-  var nextCost = Math.floor(10 * Math.pow(1.1,spell_01_total));
+  var nextCost = Math.floor(10 * Math.pow(1.15,spell_01_total));
   document.getElementById("spell_01_cost_span").innerHTML = cleanRogueDecimals(nextCost);
   stateMachine();
 };
@@ -105,7 +105,7 @@ function buy_spell_04(){
 // Spell 05
 function buy_spell_05(){
   document.getElementById("alertBox").innerHTML = "";
-  var spell_05_cost = Math.floor(10000 * Math.pow(1.6,spell_05_total));
+  var spell_05_cost = Math.floor(10000 * Math.pow(1.15,spell_05_total));
   if(pages_read >= spell_05_cost){
     spell_05_total = spell_05_total + 1;
     pages_read = pages_read - spell_05_cost;
@@ -115,14 +115,14 @@ function buy_spell_05(){
   else {
     document.getElementById("alertBox").innerHTML = "You don't have enough arcane knowledge to cast this spell...";
   };
-  var nextCost = Math.floor(1000 * Math.pow(1.6,spell_05_total));
+  var nextCost = Math.floor(1000 * Math.pow(1.15,spell_05_total));
   document.getElementById("spell_05_cost_span").innerHTML = cleanRogueDecimals(nextCost);
   stateMachine();
 };
 // Spell 06
 function buy_spell_06(){
   document.getElementById("alertBox").innerHTML = "";
-  var spell_06_cost = Math.floor(25000 * Math.pow(2,spell_06_total));
+  var spell_06_cost = Math.floor(25000 * Math.pow(1.15,spell_06_total));
   if(pages_read >= spell_06_cost){
     spell_06_total = spell_06_total + 1;
     pages_read = pages_read - spell_06_cost;
@@ -132,14 +132,14 @@ function buy_spell_06(){
   else {
     document.getElementById("alertBox").innerHTML = "You don't have enough arcane knowledge to cast this spell...";
   };
-  var nextCost = Math.floor(1000 * Math.pow(2,spell_06_total));
+  var nextCost = Math.floor(1000 * Math.pow(1.15,spell_06_total));
   document.getElementById("spell_06_cost_span").innerHTML = cleanRogueDecimals(nextCost);
   stateMachine();
 };
 // Spell 07
 function buy_spell_07(){
   document.getElementById("alertBox").innerHTML = "";
-  var spell_07_cost = Math.floor(70000 * Math.pow(3.04,spell_07_total));
+  var spell_07_cost = Math.floor(70000 * Math.pow(1.15,spell_07_total));
   if(pages_read >= spell_07_cost){
     spell_07_total = spell_07_total + 1;
     pages_read = pages_read - spell_07_cost;
@@ -149,14 +149,14 @@ function buy_spell_07(){
   else {
     document.getElementById("alertBox").innerHTML = "You don't have enough arcane knowledge to cast this spell...";
   };
-  var nextCost = Math.floor(1000 * Math.pow(3.04,spell_07_total));
+  var nextCost = Math.floor(1000 * Math.pow(1.15,spell_07_total));
   document.getElementById("spell_07_cost_span").innerHTML = cleanRogueDecimals(nextCost);
   stateMachine();
 };
 // Spell 08
 function buy_spell_08(){
   document.getElementById("alertBox").innerHTML = "";
-  var spell_08_cost = Math.floor(125000 * Math.pow(3.99,spell_08_total));
+  var spell_08_cost = Math.floor(125000 * Math.pow(1.15,spell_08_total));
   if(pages_read >= spell_08_cost){
     spell_08_total = spell_08_total + 1;
     pages_read = pages_read - spell_08_cost;
@@ -166,14 +166,14 @@ function buy_spell_08(){
   else {
     document.getElementById("alertBox").innerHTML = "You don't have enough arcane knowledge to cast this spell...";
   };
-  var nextCost = Math.floor(1000 * Math.pow(3.99,spell_08_total));
+  var nextCost = Math.floor(1000 * Math.pow(1.15,spell_08_total));
   document.getElementById("spell_08_cost_span").innerHTML = cleanRogueDecimals(nextCost);
   stateMachine();
 };
 // Spell 09
 function buy_spell_09(){
   document.getElementById("alertBox").innerHTML = "";
-  var spell_09_cost = Math.floor(430000 * Math.pow(4.5,spell_09_total));
+  var spell_09_cost = Math.floor(430000 * Math.pow(1.15,spell_09_total));
   if(pages_read >= spell_09_cost){
     spell_09_total = spell_09_total + 1;
     pages_read = pages_read - spell_09_cost;
@@ -183,14 +183,14 @@ function buy_spell_09(){
   else {
     document.getElementById("alertBox").innerHTML = "You don't have enough arcane knowledge to cast this spell...";
   };
-  var nextCost = Math.floor(1000 * Math.pow(4.5,spell_09_total));
+  var nextCost = Math.floor(1000 * Math.pow(1.15,spell_09_total));
   document.getElementById("spell_09_cost_span").innerHTML = cleanRogueDecimals(nextCost);
   stateMachine();
 };
 // SPell 10
 function buy_spell_10(){
   document.getElementById("alertBox").innerHTML = "";
-  var spell_10_cost = Math.floor(820000 * Math.pow(5,spell_10_total));
+  var spell_10_cost = Math.floor(820000 * Math.pow(1.15,spell_10_total));
   if(pages_read >= spell_10_cost){
     spell_10_total = spell_10_total + 1;
     pages_read = pages_read - spell_10_cost;
@@ -200,7 +200,7 @@ function buy_spell_10(){
   else {
     document.getElementById("alertBox").innerHTML = "You don't have enough arcane knowledge to cast this spell...";
   };
-  var nextCost = Math.floor(1000 * Math.pow(5,spell_10_total));
+  var nextCost = Math.floor(1000 * Math.pow(1.15,spell_10_total));
   document.getElementById("spell_10_cost_span").innerHTML = cleanRogueDecimals(nextCost);
   stateMachine();
 };
@@ -212,6 +212,6 @@ window.setInterval(function() {
     document.getElementById("alertBox").innerHTML = "";
     alertBoxClear = 0;
   };
-  readPages((spell_01_total*1)+(spell_02_total*5)+(spell_03_total*10)+(spell_04_total*100));
+  readPages((spell_01_total+(spell_02_total *5)+(spell_03_total *40)+(spell_04_total *100)+(spell_05_total * 400)+(spell_06_total *1000)+(spell_06_total *4000)+(spell_07_total * 10000)+(spell_08_total *99000)+(spell_09_total * 1000000)+(spell_10_total *10000000)));
   stateMachine();
 }, 1000);

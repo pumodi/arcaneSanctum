@@ -26,44 +26,44 @@ function plotMachine() {
     case (pages_read_this_game <= 0):
       document.getElementById("dialogueBox").innerHTML = 'You come across an open book that says "read me"';
       break;
-    case (pages_read_this_game >= 1 && pages_read_this_game <1000):
+    case (pages_read_this_game >= 1 && pages_read_this_game <100):
       document.getElementById("dialogueBox").innerHTML = "The book appears to be a spellbook of some kind. You feel compelled to read further...";
       document.getElementById("autoReadSpellDiv").style.visibility = "visible";
       break;
-    case (pages_read_this_game >= 1000 && pages_read_this_game <10000):
+    case (pages_read_this_game >= 100 && pages_read_this_game <1000):
       document.getElementById("dialogueBox").innerHTML = "After pouring through the volume, you find that it is possible to control someone elses mind. Perhaps you could use this to help you gain even more knowledge. If only you knew how to cast such a spell. Must keep reading...";
       document.getElementById("mindControlSpellDiv").style.visibility = "visible";
       break;
-    case (pages_read_this_game >= 10000 && pages_read_this_game <50000):
+    case (pages_read_this_game >= 1000 && pages_read_this_game <10000):
       document.getElementById("dialogueBox").innerHTML = "MINION SPELL ACTIVE";
       document.getElementById("minionSpellDiv").style.visibility = "visible";
       document.getElementById("modifier_speedReadDiv").style.visibility = "visible";
       break;
-    case (pages_read_this_game >= 50000 && pages_read_this_game <1000000):
+    case (pages_read_this_game >= 10000 && pages_read_this_game <50000):
       document.getElementById("dialogueBox").innerHTML = "SPELL 04 ACTIVE";
       document.getElementById("spell_04_Div").style.visibility = "visible";
       break;
-    case (pages_read_this_game >= 100000 && pages_read_this_game <450000):
+    case (pages_read_this_game >= 50000 && pages_read_this_game <100000):
       document.getElementById("dialogueBox").innerHTML = "SPELL 05 ACTIVE";
       document.getElementById("spell_05_Div").style.visibility = "visible";
       break;
-    case (pages_read_this_game >= 450000 && pages_read_this_game <900000):
+    case (pages_read_this_game >= 100000 && pages_read_this_game <500000):
       document.getElementById("dialogueBox").innerHTML = "SPELL 06 ACTIVE";
       document.getElementById("spell_06_Div").style.visibility = "visible";
       break;
-    case (pages_read_this_game >= 900000 && pages_read_this_game <1250000):
+    case (pages_read_this_game >= 500000 && pages_read_this_game <1000000):
       document.getElementById("dialogueBox").innerHTML = "SPELL 07 ACTIVE";
       document.getElementById("spell_07_Div").style.visibility = "visible";
       break;
-    case (pages_read_this_game >= 1250000 && pages_read_this_game <9000000):
+    case (pages_read_this_game >= 1000000 && pages_read_this_game <5000000):
       document.getElementById("dialogueBox").innerHTML = "SPELL 08 ACTIVE";
       document.getElementById("spell_08_Div").style.visibility = "visible";
       break;
-    case (pages_read_this_game >= 9000000 && pages_read_this_game <25000000):
+    case (pages_read_this_game >= 5000000 && pages_read_this_game <10000000):
       document.getElementById("dialogueBox").innerHTML = "SPELL 09 ACTIVE";
       document.getElementById("spell_09_Div").style.visibility = "visible";
       break;
-    case (pages_read_this_game >= 25000000 && pages_read_this_game <75000000):
+    case (pages_read_this_game >= 10000000 && pages_read_this_game <50000000):
       document.getElementById("dialogueBox").innerHTML = "SPELL 10 ACTIVE";
       document.getElementById("spell_10_Div").style.visibility = "visible";
       break;
@@ -74,7 +74,7 @@ function plotMachine() {
 };
 function stateMachine() {
 // Display Variables
-  pagesPerSecond = (spell_01_total+(spell_02_total *10)+(spell_03_total *100)+(spell_04_total *1000));
+  pagesPerSecond = (spell_01_total+(spell_02_total *5)+(spell_03_total *40)+(spell_04_total *100)+(spell_05_total * 400)+(spell_06_total *1000)+(spell_06_total *4000)+(spell_07_total * 10000)+(spell_08_total *99000)+(spell_09_total * 1000000)+(spell_10_total *10000000));
   document.getElementById("notoriety").innerHTML = Math.floor(notoriety);
   document.getElementById("pagesPerSecond").innerHTML = pagesPerSecond;
   document.getElementById("pages_read_total").innerHTML = pages_read_this_game;
